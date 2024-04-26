@@ -132,14 +132,11 @@
 		const updateVideoStream = function (deviceId) {
 			alert(deviceId);
 			navigator.mediaDevices
-				.getUserMedia({ video: { facingMode: deviceId }, audio: false })
+				.getUserMedia({ video: { facingMode: { exact: deviceId } }, audio: false })
 				.then(function (stream) {
 					video.srcObject = stream;
 					video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-					// video.play();
-					video.onloadedmetadata = () => {
-      					    video.play();
-    					};
+					video.play();
 					processFrame();
 				})
 				.catch(function (error) {
