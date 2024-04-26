@@ -130,6 +130,7 @@
 		};
 
 		const updateVideoStream = function (deviceId) {
+			alert(deviceId);
 			navigator.mediaDevices
 				.getUserMedia({ video: { facingMode: deviceId }, audio: false })
 				.then(function (stream) {
@@ -140,6 +141,7 @@
 				})
 				.catch(function (error) {
 					console.error("Error accessing camera:", error);
+					alert(error);
 				});
 		};
 
